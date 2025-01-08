@@ -1,39 +1,56 @@
 # Set the window title
-$host.ui.RawUI.WindowTitle = "@joshuarifareal scripts"
+$host.ui.RawUI.WindowTitle = "life changing scripts"
 
-# Function to handle Option 1
+# Function to check if the script exists and run it
+function Run-ExternalScript {
+    param (
+        [string]$scriptPath
+    )
+
+    # Check if the script exists
+    if (Test-Path $scriptPath) {
+        Write-Host "Running external script: $scriptPath"
+        # Run the external script
+        & $scriptPath
+    }
+    else {
+        Write-Host "External script not found at: $scriptPath" -ForegroundColor Red
+    }
+}
+
 function Option1 {
-    Write-Host "You selected Option 1. Here is the information for Option 1."
-    # You can add more actions or logic here
+    Write-Host "You selected Option 1. Running an external script..."
+    $externalScriptPath = ".blenderkit.ps1"
+    Run-ExternalScript -scriptPath $externalScriptPath
 }
 
-# Function to handle Option 2
 function Option2 {
-    Write-Host "You selected Option 2. Here is the information for Option 2."
-    # Add more actions or logic for Option 2 here
+    Write-Host "You selected Option 2. Running an external script..."
+    $externalScriptPath = ".\externalScripts\externalScript2.ps1"
+    Run-ExternalScript -scriptPath $externalScriptPath
 }
 
-# Function to handle Option 3
 function Option3 {
-    Write-Host "You selected Option 3. Here is the information for Option 3."
-    # Add more actions or logic for Option 3 here
+    Write-Host "You selected Option 3. Running an external script..."
+    $externalScriptPath = ".\externalScripts\externalScript3.ps1"
+    Run-ExternalScript -scriptPath $externalScriptPath
 }
 
-# Function to handle Option 4
 function Option4 {
-    Write-Host "You selected Option 4. Here is the information for Option 4."
-    # Add more actions or logic for Option 4 here
+    Write-Host "You selected Option 4. Running an external script..."
+    $externalScriptPath = ".\externalScripts\externalScript4.ps1"
+    Run-ExternalScript -scriptPath $externalScriptPath
 }
 
 # Function to display the menu and handle user input
 function Show-Menu {
     Clear-Host
-    Write-Host "Welcome to the Script Menu" -ForegroundColor Cyan
-    Write-Host "Please choose an option by entering the corresponding number:"
-    Write-Host "1. Option 1"
-    Write-Host "2. Option 2"
-    Write-Host "3. Option 3"
-    Write-Host "4. Option 4"
+    Write-Host "Welcome to the Life Changing Scripts!" -ForegroundColor Cyan
+    Write-Host "Choose an option by entering the corresponding number:"
+    Write-Host "1. Install BlenderKit"
+    Write-Host "2. Option 2 (Run external script 2)"
+    Write-Host "3. Option 3 (Run external script 3)"
+    Write-Host "4. Option 4 (Run external script 4)"
     Write-Host "0. Exit"
 }
 
