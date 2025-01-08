@@ -20,7 +20,7 @@ function Run-ExternalScript {
 
 function Option1 {
     Write-Host "You selected Option 1. Running an external script..."
-    $externalScriptPath = ".blenderkit.ps1"
+    $externalScriptPath = ".\tools\blenderkit.ps1"
     Run-ExternalScript -scriptPath $externalScriptPath
 }
 
