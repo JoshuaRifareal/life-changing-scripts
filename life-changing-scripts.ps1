@@ -68,7 +68,7 @@ function Handle-Input {
         '2' { Option2 }
         '3' { Option3 }
         '4' { Option4 }
-        '0' { Write-Host "Exiting script. Goodbye!" -ForegroundColor Green }
+        '0' { Write-Host "Exiting script. Goodbye!" -ForegroundColor Green}
         default { Write-Host "Invalid choice. Please enter a number between 0 and 4." -ForegroundColor Red }
     }
 }
