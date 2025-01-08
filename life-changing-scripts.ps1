@@ -26,25 +26,25 @@ function Run-ExternalScript {
 function Option1 {
     Write-Host "You selected Option 1. Running an external script..."
     $externalScriptPath = "https://raw.githubusercontent.com/JoshuaRifareal/life-changing-scripts/refs/heads/main/tools/blenderkit.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 function Option2 {
     Write-Host "You selected Option 2. Running an external script..."
     $externalScriptPath = ".\externalScripts\externalScript2.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 function Option3 {
     Write-Host "You selected Option 3. Running an external script..."
     $externalScriptPath = ".\externalScripts\externalScript3.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 function Option4 {
     Write-Host "You selected Option 4. Running an external script..."
     $externalScriptPath = ".\externalScripts\externalScript4.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 # Function to display the menu and handle user input
