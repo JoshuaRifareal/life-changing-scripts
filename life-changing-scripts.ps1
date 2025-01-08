@@ -1,26 +1,31 @@
 # Set the window title
 $host.ui.RawUI.WindowTitle = "life changing scripts"
 
-# Function to check if the script exists and run it
+# Function to download and run an external script from GitHub without saving it
 function Run-ExternalScript {
     param (
-        [string]$scriptPath
+        [string]$scriptUrl
     )
 
-    # Check if the script exists
-    if (Test-Path $scriptPath) {
-        Write-Host "Running external script: $scriptPath"
-        # Run the external script
-        & $scriptPath
+    # Download the external script from GitHub raw URL
+    Write-Host "Downloading and executing external script from GitHub: $scriptUrl"
+
+    try {
+        # Get the raw content of the external script
+        $scriptContent = Invoke-RestMethod -Uri $scriptUrl
+
+        # Execute the downloaded script content directly
+        Write-Host "Executing the external script..."
+        Invoke-Expression $scriptContent
     }
-    else {
-        Write-Host "External script not found at: $scriptPath" -ForegroundColor Red
+    catch {
+        Write-Host "Error downloading or executing the external script." -ForegroundColor Red
     }
 }
 
 function Option1 {
     Write-Host "You selected Option 1. Running an external script..."
-    $externalScriptPath = ".\tools\blenderkit.ps1"
+    $externalScriptPath = "https://raw.githubusercontent.com/JoshuaRifareal/life-changing-scripts/refs/heads/main/tools/blenderkit.ps1"
     Run-ExternalScript -scriptPath $externalScriptPath
 }
 
