@@ -1,45 +1,50 @@
 # Set the window title
 $host.ui.RawUI.WindowTitle = "life changing scripts"
 
-# Function to check if the script exists and run it
+# Function to download and run an external script from GitHub without saving it
 function Run-ExternalScript {
     param (
-        [string]$scriptPath
+        [string]$scriptUrl
     )
 
-    # Check if the script exists
-    if (Test-Path $scriptPath) {
-        Write-Host "Running external script: $scriptPath"
-        # Run the external script
-        & $scriptPath
+    # Download the external script from GitHub raw URL
+    Write-Host "Downloading and executing external script from GitHub: $scriptUrl"
+
+    try {
+        # Get the raw content of the external script
+        $scriptContent = Invoke-RestMethod -Uri $scriptUrl
+
+        # Execute the downloaded script content directly
+        Write-Host "Executing the external script..."
+        Invoke-Expression $scriptContent
     }
-    else {
-        Write-Host "External script not found at: $scriptPath" -ForegroundColor Red
+    catch {
+        Write-Host "Error downloading or executing the external script." -ForegroundColor Red
     }
 }
 
 function Option1 {
     Write-Host "You selected Option 1. Running an external script..."
-    $externalScriptPath = ".\tools\blenderkit.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    $externalScriptPath = "https://raw.githubusercontent.com/JoshuaRifareal/life-changing-scripts/refs/heads/main/tools/blenderkit.ps1"
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 function Option2 {
     Write-Host "You selected Option 2. Running an external script..."
     $externalScriptPath = ".\externalScripts\externalScript2.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 function Option3 {
     Write-Host "You selected Option 3. Running an external script..."
     $externalScriptPath = ".\externalScripts\externalScript3.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 function Option4 {
     Write-Host "You selected Option 4. Running an external script..."
     $externalScriptPath = ".\externalScripts\externalScript4.ps1"
-    Run-ExternalScript -scriptPath $externalScriptPath
+    Run-ExternalScript -scriptUrl $externalScriptPath
 }
 
 # Function to display the menu and handle user input
@@ -63,7 +68,7 @@ function Handle-Input {
         '2' { Option2 }
         '3' { Option3 }
         '4' { Option4 }
-        '0' { Write-Host "Exiting script. Goodbye!" -ForegroundColor Green; exit }
+        '0' { Write-Host "Exiting script. Goodbye!" -ForegroundColor Green}
         default { Write-Host "Invalid choice. Please enter a number between 0 and 4." -ForegroundColor Red }
     }
 }
