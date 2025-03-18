@@ -47,7 +47,7 @@ function Show-Menu {
     Clear-Host
     Write-Host "Welcome to the Life Changing Scripts!" -ForegroundColor Cyan
     Write-Host "Choose an option by entering the corresponding number:"
-    Write-Host "1. Install BlenderKit"
+    Write-Host "1. Download BlenderKit"
     Write-Host "2. Option 2 (Run external script 2)"
     Write-Host "3. Option 3 (Run external script 3)"
     Write-Host "4. Option 4 (Run external script 4)"
